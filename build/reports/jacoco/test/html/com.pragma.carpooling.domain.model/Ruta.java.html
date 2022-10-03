@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ruta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">carpooling</a> &gt; <a href="index.source.html" class="el_package">com.pragma.carpooling.domain.model</a> &gt; <span class="el_source">Ruta.java</span></div><h1>Ruta.java</h1><pre class="source lang-java linenums">package com.pragma.carpooling.domain.model;
+
+public class Ruta {
+
+    private Long idRuta;
+    private Long idUsuario;
+    private String descripcion;
+    private Integer cupos;
+
+<span class="nc" id="L10">    public Ruta(Long idRuta, Long idUsuario, String descripcion, Integer cupos) {</span>
+<span class="nc" id="L11">        this.idRuta = idRuta;</span>
+<span class="nc" id="L12">        this.idUsuario = idUsuario;</span>
+<span class="nc" id="L13">        this.descripcion = descripcion;</span>
+<span class="nc" id="L14">        this.cupos = cupos;</span>
+<span class="nc" id="L15">    }</span>
+
+    public Long getIdRuta() {
+<span class="nc" id="L18">        return idRuta;</span>
+    }
+
+    public void setIdRuta(Long idRuta) {
+<span class="nc" id="L22">        this.idRuta = idRuta;</span>
+<span class="nc" id="L23">    }</span>
+
+    public Long getIdUsuario() {
+<span class="nc" id="L26">        return idUsuario;</span>
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+<span class="nc" id="L30">        this.idUsuario = idUsuario;</span>
+<span class="nc" id="L31">    }</span>
+
+    public String getDescripcion() {
+<span class="nc" id="L34">        return descripcion;</span>
+    }
+
+    public void setDescripcion(String descripcion) {
+<span class="nc" id="L38">        this.descripcion = descripcion;</span>
+<span class="nc" id="L39">    }</span>
+
+    public Integer getCupos() {
+<span class="nc" id="L42">        return cupos;</span>
+    }
+
+    public void setCupos(Integer cupos) {
+<span class="nc" id="L46">        this.cupos = cupos;</span>
+<span class="nc" id="L47">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

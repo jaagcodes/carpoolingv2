@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RutaHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">carpooling</a> &gt; <a href="index.source.html" class="el_package">com.pragma.carpooling.application.handler</a> &gt; <span class="el_source">RutaHandler.java</span></div><h1>RutaHandler.java</h1><pre class="source lang-java linenums">package com.pragma.carpooling.application.handler;
+
+import com.pragma.carpooling.application.dto.RutaCompletaRequest;
+import com.pragma.carpooling.application.mapper.RutaCompletaRequestMapper;
+import com.pragma.carpooling.domain.api.IBarrioServicePort;
+import com.pragma.carpooling.domain.api.IRutaBarrioServicePort;
+import com.pragma.carpooling.domain.api.IRutaServicePort;
+import com.pragma.carpooling.domain.api.IUsuarioServicePort;
+import com.pragma.carpooling.domain.api.IViajeServicePort;
+import com.pragma.carpooling.domain.model.Barrio;
+import com.pragma.carpooling.domain.model.Ruta;
+import com.pragma.carpooling.domain.model.Usuario;
+import com.pragma.carpooling.domain.model.Viaje;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+
+@Service
+<span class="fc" id="L22">@RequiredArgsConstructor</span>
+@Transactional
+public class RutaHandler implements IRutaHandler{
+
+    private final IRutaServicePort rutaServicePort;
+    private final IUsuarioServicePort usuarioServicePort;
+    private final IBarrioServicePort barrioServicePort;
+    private final IRutaBarrioServicePort rutaBarrioServicePort;
+    private final IViajeServicePort viajeServicePort;
+    private final RutaCompletaRequestMapper rutaCompletaRequestMapper;
+
+    @Override
+    public void guardarRutaCompleta(RutaCompletaRequest rutaCompletaRequest) {
+<span class="nc" id="L35">        Usuario usuario = usuarioServicePort.guardarUsuario(rutaCompletaRequestMapper.toUsuario(rutaCompletaRequest.getUsuario()));</span>
+<span class="nc" id="L36">        Ruta ruta = rutaCompletaRequestMapper.toRuta(rutaCompletaRequest);</span>
+<span class="nc" id="L37">        Long idConductor = usuario.getIdUsuario();</span>
+<span class="nc" id="L38">        ruta.setIdUsuario(idConductor);</span>
+<span class="nc" id="L39">        ruta = rutaServicePort.guardarRuta(ruta);</span>
+<span class="nc" id="L40">        Long idRuta = ruta.getIdRuta();</span>
+<span class="nc" id="L41">        List&lt;Barrio&gt; barriosList = barrioServicePort.guardarListabarrios(rutaCompletaRequestMapper.toBarrioList(rutaCompletaRequest.getBarriosList()));</span>
+<span class="nc" id="L42">        rutaBarrioServicePort.guardarRutaBarrio(barriosList, idRuta);</span>
+<span class="nc" id="L43">        List&lt;Viaje&gt; viajesList = rutaCompletaRequestMapper.toViajeList(rutaCompletaRequest.getViajesList());</span>
+<span class="nc" id="L44">        viajeServicePort.guardarListaViajes(viajesList, idRuta);</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

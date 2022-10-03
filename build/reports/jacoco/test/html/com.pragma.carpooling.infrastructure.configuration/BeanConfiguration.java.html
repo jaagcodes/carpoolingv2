@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BeanConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">carpooling</a> &gt; <a href="index.source.html" class="el_package">com.pragma.carpooling.infrastructure.configuration</a> &gt; <span class="el_source">BeanConfiguration.java</span></div><h1>BeanConfiguration.java</h1><pre class="source lang-java linenums">package com.pragma.carpooling.infrastructure.configuration;
+
+import com.pragma.carpooling.domain.api.IBarrioServicePort;
+import com.pragma.carpooling.domain.api.IRutaBarrioServicePort;
+import com.pragma.carpooling.domain.api.IRutaServicePort;
+import com.pragma.carpooling.domain.api.IUsuarioServicePort;
+import com.pragma.carpooling.domain.api.IViajeServicePort;
+import com.pragma.carpooling.domain.spi.IBarrioPersistencePort;
+import com.pragma.carpooling.domain.spi.IRutaBarrioPersistencePort;
+import com.pragma.carpooling.domain.spi.IRutaPersistencePort;
+import com.pragma.carpooling.domain.spi.IUsuarioPersistencePort;
+import com.pragma.carpooling.domain.spi.IViajePersistencePort;
+import com.pragma.carpooling.domain.usecase.BarrioUseCase;
+import com.pragma.carpooling.domain.usecase.RutaBarrioUseCase;
+import com.pragma.carpooling.domain.usecase.RutaUseCase;
+import com.pragma.carpooling.domain.usecase.UsuarioUseCase;
+import com.pragma.carpooling.domain.usecase.ViajeUseCase;
+import com.pragma.carpooling.infrastructure.out.jpa.adapter.BarrioJpaAdapter;
+import com.pragma.carpooling.infrastructure.out.jpa.adapter.RutaBarrioJpaAdapter;
+import com.pragma.carpooling.infrastructure.out.jpa.adapter.RutaJpaAdapter;
+import com.pragma.carpooling.infrastructure.out.jpa.adapter.UsuarioJpaAdapter;
+import com.pragma.carpooling.infrastructure.out.jpa.adapter.ViajeJpaAdapter;
+import com.pragma.carpooling.infrastructure.out.jpa.mapper.BarrioEntityMapper;
+import com.pragma.carpooling.infrastructure.out.jpa.mapper.RutaBarrioEntityMapper;
+import com.pragma.carpooling.infrastructure.out.jpa.mapper.RutaEntityMapper;
+import com.pragma.carpooling.infrastructure.out.jpa.mapper.UsuarioEntityMapper;
+import com.pragma.carpooling.infrastructure.out.jpa.mapper.ViajeEntityMapper;
+import com.pragma.carpooling.infrastructure.out.jpa.repository.IBarrioRepository;
+import com.pragma.carpooling.infrastructure.out.jpa.repository.IRutaBarrioRepository;
+import com.pragma.carpooling.infrastructure.out.jpa.repository.IRutaRepository;
+import com.pragma.carpooling.infrastructure.out.jpa.repository.IUsuarioRepository;
+import com.pragma.carpooling.infrastructure.out.jpa.repository.IViajeRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+<span class="fc" id="L38">@RequiredArgsConstructor</span>
+public class BeanConfiguration {
+
+    private final IUsuarioRepository usuarioRepository;
+    private final UsuarioEntityMapper usuarioEntityMapper;
+    private final RutaEntityMapper rutaEntityMapper;
+    private final IRutaRepository rutaRepository;
+    private final BarrioEntityMapper barrioEntityMapper;
+    private final IBarrioRepository barrioRepository;
+    private final IRutaBarrioRepository rutaBarrioRepository;
+    private final RutaBarrioEntityMapper rutaBarrioEntityMapper;
+    private final IViajeRepository viajeRepository;
+    private final ViajeEntityMapper viajeEntityMapper;
+
+    @Bean
+    public IUsuarioPersistencePort usuarioPersistencePort(){
+<span class="fc" id="L54">        return new UsuarioJpaAdapter(usuarioRepository, usuarioEntityMapper);</span>
+    }
+
+    @Bean
+    public IUsuarioServicePort usuarioServicePort(){
+<span class="fc" id="L59">        return new UsuarioUseCase(usuarioPersistencePort());</span>
+    }
+
+    @Bean
+    public IRutaPersistencePort rutaPersistencePort(){
+<span class="fc" id="L64">        return new RutaJpaAdapter(rutaRepository, rutaEntityMapper);</span>
+    }
+
+    @Bean
+<span class="fc" id="L68">    public IRutaBarrioPersistencePort rutaBarrioPersistencePort(){return new RutaBarrioJpaAdapter(rutaBarrioRepository, rutaBarrioEntityMapper);</span>
+    }
+
+    @Bean
+    public IRutaBarrioServicePort rutaBarrioServicePort(){
+<span class="fc" id="L73">        return new RutaBarrioUseCase(rutaBarrioPersistencePort());</span>
+    }
+
+    @Bean
+    public IViajePersistencePort viajePersistencePort(){
+<span class="fc" id="L78">        return new ViajeJpaAdapter( viajeEntityMapper, viajeRepository);</span>
+    }
+
+    @Bean
+    public IViajeServicePort viajeServicePort(){
+<span class="fc" id="L83">        return new ViajeUseCase(viajePersistencePort());</span>
+    }
+
+
+    @Bean
+    public IRutaServicePort rutaServicePort(){
+<span class="fc" id="L89">        return new RutaUseCase(rutaPersistencePort());</span>
+    }
+
+    @Bean
+    public IBarrioPersistencePort barrioPersistencePort(){
+<span class="fc" id="L94">        return new BarrioJpaAdapter(barrioRepository, barrioEntityMapper);</span>
+    }
+
+    @Bean
+    public IBarrioServicePort barrioServicePort(){
+<span class="fc" id="L99">        return new BarrioUseCase(barrioPersistencePort());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

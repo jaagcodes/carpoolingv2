@@ -1,5 +1,7 @@
 package com.pragma.carpooling.domain.model;
 
+import java.util.Objects;
+
 public class Barrio {
 
     private Long idBarrio;
@@ -34,5 +36,18 @@ public class Barrio {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Barrio barrio = (Barrio) o;
+        return Objects.equals(idBarrio, barrio.idBarrio) && Objects.equals(nombre, barrio.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idBarrio, nombre);
     }
 }

@@ -6,7 +6,6 @@ import com.pragma.carpooling.domain.spi.IViajePersistencePort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ViajeUseCase implements IViajeServicePort {
