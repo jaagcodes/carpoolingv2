@@ -15,12 +15,12 @@ import java.util.List;
 )
 public interface RutaBarrioEntityMapper {
 
-    @Mapping(target="idBarrio", source = "barrioEntity.idBarrio")
-    @Mapping(target="idRuta", source = "rutaEntity.idRuta")
+    @Mapping(target = "idRuta", source="rutaEntity.idRuta")
+    @Mapping(target = "idBarrio", source="barrioEntity.idBarrio")
     RutaBarrio toRutaBarrio(RutaBarrioEntity rutaBarrioEntity);
 
-    @Mapping(target="rutaEntity.idRuta", source = "idRuta")
-    @Mapping(target="barrioEntity.idBarrio", source = "idBarrio")
+    @Mapping(target = "rutaEntity.idRuta", source="idRuta")
+    @Mapping(target = "barrioEntity.idBarrio", source="idBarrio")
     RutaBarrioEntity toRutaBarrioEntity(RutaBarrio rutaBarrio);
     List<RutaBarrio> toRutaBarrioList(List<RutaBarrioEntity> rutaBarrioEntityList);
 

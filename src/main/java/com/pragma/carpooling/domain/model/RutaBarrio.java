@@ -12,13 +12,12 @@ public class RutaBarrio {
     private String puntoEncuentro;
     private Integer posicion;
 
-    public RutaBarrio(Long idRuta, Long idBarrio, String puntoEncuentro, Integer posicion) {
+    public RutaBarrio( Long idRuta, Long idBarrio, String puntoEncuentro, Integer posicion) {
         this.idRuta = idRuta;
         this.idBarrio = idBarrio;
         this.puntoEncuentro = puntoEncuentro;
         this.posicion = posicion;
     }
-
 
     public Long getId() {
         return id;
@@ -40,7 +39,7 @@ public class RutaBarrio {
         return idBarrio;
     }
 
-    public void setIdBarrio(long idBarrio) {
+    public void setIdBarrio(Long idBarrio) {
         this.idBarrio = idBarrio;
     }
 

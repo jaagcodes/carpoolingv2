@@ -28,8 +28,7 @@ public class RutaBarrioEntity {
 
     @ManyToOne
     @JoinColumn(
-            name = "id_ruta",
-            nullable = false
+            name = "id_ruta"
     )
     private RutaEntity rutaEntity;
 

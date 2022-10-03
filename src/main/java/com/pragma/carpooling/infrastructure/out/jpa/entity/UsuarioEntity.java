@@ -1,5 +1,6 @@
 package com.pragma.carpooling.infrastructure.out.jpa.entity;
 
+import com.pragma.carpooling.domain.model.Ruta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

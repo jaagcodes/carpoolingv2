@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IRutaBarrioPersistencePort {
 
-    RutaBarrio guardarRutaBarrio(RutaBarrio rutaBarrio);
+    void guardarRutaBarrio(RutaBarrio rutaBarrio);
 
-    List<RutaBarrio> listarRutaBarrio();
+
 }

@@ -9,11 +9,4 @@ public interface IRutaPersistencePort {
 
     Ruta guardarRuta(Ruta ruta);
 
-    List<Ruta> obteneterTodasRutas();
-
-    Ruta obtenerRuta(Long idRuta);
-
-    void actualizarRuta(Ruta ruta);
-
-    void eliminarRuta(Long idRuta);
 }

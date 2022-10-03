@@ -8,11 +8,4 @@ public interface IRutaHandler {
 
     void guardarRutaCompleta(RutaCompletaRequest rutaCompletaRequest);
 
-    //List<UsuarioResponse> obtenerTodosLosUsuarios();
-
-    //UsuarioResponse obtenerUsuario(String emailUsuario);
-
-    //void actualizarUsuario(UsuarioRequest usuarioRequest);
-
-    //void eliminarUsuario(String emailUsuario);
 }

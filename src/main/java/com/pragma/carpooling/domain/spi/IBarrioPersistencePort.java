@@ -9,11 +9,4 @@ public interface IBarrioPersistencePort {
 
     Barrio guardarBarrio(Barrio barrio);
 
-    List<Barrio> obteneterTodosBarrios();
-
-    Barrio obtenerBarrio(Long idBarrio);
-
-    void actualizarBarrio(Barrio usuario);
-
-    void eliminarBarrio(Long idBarrio);
 }

@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface IRutaServicePort {
 
-    void guardarRutaCompleta(Ruta ruta, Usuario usuario, List<Barrio> barriosList, List<Viaje> viajesList);
+    Ruta guardarRuta(Ruta ruta);
 
 }

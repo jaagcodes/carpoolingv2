@@ -36,8 +36,7 @@ public class RutaEntity {
     private Integer cupos;
     @ManyToOne
     @JoinColumn(
-            name = "id_usuario",
-            nullable = false
+            name = "id_usuario"
     )
     private UsuarioEntity usuarioEntity;
 

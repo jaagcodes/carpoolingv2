@@ -25,28 +25,4 @@ public class BarrioJpaAdapter implements IBarrioPersistencePort {
         return barrioEntityMapper.toBarrio(barrioRepository.save(barrioEntityMapper.toEntity(barrio)));
     }
 
-    @Override
-    public List<Barrio> obteneterTodosBarrios() {
-        List<BarrioEntity> barrioEntityList = barrioRepository.findAll();
-        if(barrioEntityList.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return barrioEntityMapper.toBarrioList(barrioEntityList);
-    }
-
-    @Override
-    public Barrio obtenerBarrio(Long idBarrio) {
-        return barrioEntityMapper.toBarrio(barrioRepository.findById(idBarrio)
-                .orElseThrow(BarrioNotFoundException::new));
-    }
-
-    @Override
-    public void actualizarBarrio(Barrio usuario) {
-        barrioRepository.save(barrioEntityMapper.toEntity(usuario));
-    }
-
-    @Override
-    public void eliminarBarrio(Long idBarrio) {
-        barrioRepository.deleteById(idBarrio);
-    }
 }

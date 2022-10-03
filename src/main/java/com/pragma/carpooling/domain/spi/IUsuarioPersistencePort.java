@@ -9,12 +9,7 @@ public interface IUsuarioPersistencePort {
 
     Usuario guardarUsuario(Usuario usuario);
 
-    List<Usuario> obteneterTodosUsuarios();
-
     Usuario obtenerUsuario(String emailUsuario);
 
-    void actualizarUsuario(Usuario usuario);
-
-    void eliminarUsuario(String emailUsuario);
 
 }

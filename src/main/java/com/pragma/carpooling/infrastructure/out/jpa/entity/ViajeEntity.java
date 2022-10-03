@@ -27,8 +27,7 @@ public class ViajeEntity {
     private Long idViaje;
     @ManyToOne
     @JoinColumn(
-            name = "id_ruta",
-            nullable = false
+            name = "id_ruta"
     )
     private RutaBarrioEntity rutaBarrioEntity;
     @Column(name = "horario")

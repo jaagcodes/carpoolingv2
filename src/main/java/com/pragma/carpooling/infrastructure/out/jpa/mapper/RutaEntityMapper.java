@@ -13,9 +13,10 @@ import java.util.List;
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface RutaEntityMapper {
 
-    @Mapping(source = "ruta.idConductor", target = "usuarioEntity.idUsuario")
+    @Mapping(target = "usuarioEntity.idUsuario", source = "idUsuario")
     RutaEntity toEntity(Ruta ruta);
 
+    @Mapping(target = "idUsuario", source = "usuarioEntity.idUsuario")
     Ruta toRuta(RutaEntity rutaEntity);
 
     List<Ruta> toRutaList(List<RutaEntity> rutaEntityList);

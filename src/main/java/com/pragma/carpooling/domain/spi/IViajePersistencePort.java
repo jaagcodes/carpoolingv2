@@ -7,15 +7,7 @@ import java.util.List;
 
 public interface IViajePersistencePort {
 
-    Viaje guardarViaje(Viaje viaje);
 
-    void guardarViajesConRuta(Viaje viaje, Long idRuta);
+    void guardarViajesConRuta(Long idRuta, Viaje viaje);
 
-    List<Viaje> obteneterTodosViajes();
-
-    Viaje obtenerViaje(Long idViaje);
-
-    void actualizarViaje(Viaje viaje);
-
-    void eliminarViaje(Long idRuta);
 }

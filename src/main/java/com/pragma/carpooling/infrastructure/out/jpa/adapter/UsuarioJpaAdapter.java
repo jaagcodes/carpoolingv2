@@ -27,29 +27,11 @@ public class UsuarioJpaAdapter implements IUsuarioPersistencePort {
         return usuarioEntityMapper.toUsuario(usuarioRepository.save(usuarioEntityMapper.toEntity(usuario)));
     }
 
-    @Override
-    public List<Usuario> obteneterTodosUsuarios() {
-        List<UsuarioEntity> usuarioEntityList = usuarioRepository.findAll();
-        if(usuarioEntityList.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return usuarioEntityMapper.toUsuarioList(usuarioEntityList);
-    }
 
     @Override
     public Usuario obtenerUsuario(String emailUsuario) {
         return usuarioEntityMapper.toUsuario(usuarioRepository.findByEmail(emailUsuario)
                 .orElseThrow(UserNotFoundException::new));
-    }
-
-    @Override
-    public void actualizarUsuario(Usuario usuario) {
-        usuarioRepository.save(usuarioEntityMapper.toEntity(usuario));
-    }
-
-    @Override
-    public void eliminarUsuario(String emailUsuario) {
-        usuarioRepository.deleteByEmail(emailUsuario);
     }
 
 }

@@ -1,14 +1,20 @@
 package com.pragma.carpooling.infrastructure.configuration;
 
+import com.pragma.carpooling.domain.api.IBarrioServicePort;
+import com.pragma.carpooling.domain.api.IRutaBarrioServicePort;
 import com.pragma.carpooling.domain.api.IRutaServicePort;
 import com.pragma.carpooling.domain.api.IUsuarioServicePort;
+import com.pragma.carpooling.domain.api.IViajeServicePort;
 import com.pragma.carpooling.domain.spi.IBarrioPersistencePort;
 import com.pragma.carpooling.domain.spi.IRutaBarrioPersistencePort;
 import com.pragma.carpooling.domain.spi.IRutaPersistencePort;
 import com.pragma.carpooling.domain.spi.IUsuarioPersistencePort;
 import com.pragma.carpooling.domain.spi.IViajePersistencePort;
+import com.pragma.carpooling.domain.usecase.BarrioUseCase;
+import com.pragma.carpooling.domain.usecase.RutaBarrioUseCase;
 import com.pragma.carpooling.domain.usecase.RutaUseCase;
 import com.pragma.carpooling.domain.usecase.UsuarioUseCase;
+import com.pragma.carpooling.domain.usecase.ViajeUseCase;
 import com.pragma.carpooling.infrastructure.out.jpa.adapter.BarrioJpaAdapter;
 import com.pragma.carpooling.infrastructure.out.jpa.adapter.RutaBarrioJpaAdapter;
 import com.pragma.carpooling.infrastructure.out.jpa.adapter.RutaJpaAdapter;
@@ -62,17 +68,34 @@ public class BeanConfiguration {
     public IRutaBarrioPersistencePort rutaBarrioPersistencePort(){return new RutaBarrioJpaAdapter(rutaBarrioRepository, rutaBarrioEntityMapper);
     }
 
+    @Bean
+    public IRutaBarrioServicePort rutaBarrioServicePort(){
+        return new RutaBarrioUseCase(rutaBarrioPersistencePort());
+    }
+
+    @Bean
     public IViajePersistencePort viajePersistencePort(){
         return new ViajeJpaAdapter( viajeEntityMapper, viajeRepository);
     }
 
     @Bean
+    public IViajeServicePort viajeServicePort(){
+        return new ViajeUseCase(viajePersistencePort());
+    }
+
+
+    @Bean
     public IRutaServicePort rutaServicePort(){
-        return new RutaUseCase(rutaPersistencePort(),usuarioPersistencePort(), barrioPersistencePort(), rutaBarrioPersistencePort(), viajePersistencePort());
+        return new RutaUseCase(rutaPersistencePort());
     }
 
     @Bean
     public IBarrioPersistencePort barrioPersistencePort(){
         return new BarrioJpaAdapter(barrioRepository, barrioEntityMapper);
+    }
+
+    @Bean
+    public IBarrioServicePort barrioServicePort(){
+        return new BarrioUseCase(barrioPersistencePort());
     }
 }

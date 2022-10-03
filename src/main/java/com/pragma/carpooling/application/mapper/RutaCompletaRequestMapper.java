@@ -22,15 +22,12 @@ import java.util.List;
 )
 public interface RutaCompletaRequestMapper {
 
-    @Mapping(target = "descripcion", source = "rutaCompletaRequest.descripcion")
-    @Mapping(target = "cupos", source = "rutaCompletaRequest.cupos")
     Ruta toRuta(RutaCompletaRequest rutaCompletaRequest);
 
     Usuario toUsuario(UsuarioRequest usuarioRequest);
 
     List<Barrio> toBarrioList(List<BarrioRequest> barrioRequestList);
 
-    @Mapping(source = "viaje.request.horario", target = "viaje.horario")
     List<Viaje> toViajeList(List<ViajeRequest> viajeRequestList);
 
 }

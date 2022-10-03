@@ -17,17 +17,9 @@ public class RutaBarrioJpaAdapter implements IRutaBarrioPersistencePort {
     private final RutaBarrioEntityMapper rutaBarrioEntityMapper;
 
     @Override
-    public RutaBarrio guardarRutaBarrio(RutaBarrio rutaBarrio) {
-        return rutaBarrioEntityMapper.toRutaBarrio(rutaBarrioRepository
-                .save(rutaBarrioEntityMapper.toRutaBarrioEntity(rutaBarrio)));
+    public void guardarRutaBarrio(RutaBarrio rutaBarrio) {
+        RutaBarrioEntity rutaBarrioEntity = rutaBarrioEntityMapper.toRutaBarrioEntity(rutaBarrio);
+        rutaBarrioRepository.save(rutaBarrioEntity);
     }
 
-    @Override
-    public List<RutaBarrio> listarRutaBarrio() {
-        List<RutaBarrioEntity> listarRutaBarrioEntities = rutaBarrioRepository.findAll();
-        if(listarRutaBarrioEntities.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return rutaBarrioEntityMapper.toRutaBarrioList(listarRutaBarrioEntities);
-    }
 }
