@@ -8,6 +8,9 @@ public class Viaje {
     private Long idRuta;
     private LocalDateTime horario;
 
+    public Viaje() {
+    }
+
     public Viaje(Long idViaje, Long idRuta, LocalDateTime horario) {
         this.idViaje = idViaje;
         this.idRuta = idRuta;

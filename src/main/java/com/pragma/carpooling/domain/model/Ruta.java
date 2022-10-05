@@ -7,6 +7,9 @@ public class Ruta {
     private String descripcion;
     private Integer cupos;
 
+    public Ruta() {
+    }
+
     public Ruta(Long idRuta, Long idUsuario, String descripcion, Integer cupos) {
         this.idRuta = idRuta;
         this.idUsuario = idUsuario;

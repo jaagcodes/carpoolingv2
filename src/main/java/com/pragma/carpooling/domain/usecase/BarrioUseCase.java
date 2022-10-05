@@ -38,8 +38,6 @@ public class BarrioUseCase implements IBarrioServicePort {
 
     public boolean verificarNoHayBarriosRepetidos(List<Barrio> barriosList){
         Set<Barrio> barriosSet = new HashSet<>(barriosList);
-        System.out.println("barriosList.size(): "+barriosList.size());
-        System.out.println("barriosSet.size(): "+barriosSet.size());
         if(barriosList.size()!=barriosSet.size()){
             return false;
         }

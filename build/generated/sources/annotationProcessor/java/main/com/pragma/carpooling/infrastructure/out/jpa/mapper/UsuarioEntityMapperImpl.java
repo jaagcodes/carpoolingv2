@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-03T16:35:57-0500",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 11.0.13 (Eclipse Adoptium)"
+    date = "2022-10-04T19:20:34-0500",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class UsuarioEntityMapperImpl implements UsuarioEntityMapper {
@@ -37,17 +37,12 @@ public class UsuarioEntityMapperImpl implements UsuarioEntityMapper {
             return null;
         }
 
-        Long idUsuario = null;
-        String nombres = null;
-        String apellidos = null;
-        String email = null;
+        Usuario usuario = new Usuario();
 
-        idUsuario = usuarioEntity.getIdUsuario();
-        nombres = usuarioEntity.getNombres();
-        apellidos = usuarioEntity.getApellidos();
-        email = usuarioEntity.getEmail();
-
-        Usuario usuario = new Usuario( idUsuario, nombres, apellidos, email );
+        usuario.setIdUsuario( usuarioEntity.getIdUsuario() );
+        usuario.setNombres( usuarioEntity.getNombres() );
+        usuario.setApellidos( usuarioEntity.getApellidos() );
+        usuario.setEmail( usuarioEntity.getEmail() );
 
         return usuario;
     }

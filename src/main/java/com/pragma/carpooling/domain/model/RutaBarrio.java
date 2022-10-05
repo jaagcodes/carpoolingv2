@@ -1,8 +1,5 @@
 package com.pragma.carpooling.domain.model;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-
-import java.util.List;
 
 public class RutaBarrio {
 

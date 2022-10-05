@@ -1,6 +1,5 @@
 package com.pragma.carpooling.domain.api;
 
-import com.pragma.carpooling.domain.model.Barrio;
 import com.pragma.carpooling.domain.model.Viaje;
 
 import java.util.List;

@@ -17,9 +17,9 @@ public class RutaRestController {
 
     private final IRutaHandler rutaHandler;
 
-    @PostMapping("")
-    public ResponseEntity<String> guardarRutaCompleta(@RequestBody RutaCompletaRequest rutaCompletaRequest){
+    @PostMapping("guardarRutaCompleta")
+    public ResponseEntity<Void> guardarRutaCompleta(@RequestBody RutaCompletaRequest rutaCompletaRequest){
         rutaHandler.guardarRutaCompleta(rutaCompletaRequest);
-        return new ResponseEntity<>("Se ha registrado satisfactoriamente la ruta",HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

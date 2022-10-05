@@ -4,6 +4,7 @@ import com.pragma.carpooling.domain.api.IBarrioServicePort;
 import com.pragma.carpooling.domain.model.Barrio;
 import com.pragma.carpooling.domain.spi.IBarrioPersistencePort;
 import com.pragma.carpooling.infrastructure.exception.BarriosRepetidosException;
+import com.pragma.carpooling.infrastructure.exception.NoHaySuficientesBarriosException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-<span class="fc" id="L14">@RequiredArgsConstructor</span>
+<span class="fc" id="L15">@RequiredArgsConstructor</span>
 public class BarrioUseCase implements IBarrioServicePort {
 
     private final IBarrioPersistencePort barrioPersistencePort;
@@ -19,26 +20,36 @@ public class BarrioUseCase implements IBarrioServicePort {
     @Override
     public List&lt;Barrio&gt; guardarListabarrios(List&lt;Barrio&gt; barriosList) {
 
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(!verificarNoHayBarriosRepetidos(barriosList)){</span>
-<span class="nc" id="L23">            throw new BarriosRepetidosException();</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if(!verificarNoHayBarriosRepetidos(barriosList)){</span>
+<span class="fc" id="L24">            throw new BarriosRepetidosException();</span>
         }
 
-<span class="nc" id="L26">        List&lt;Barrio&gt; barriosPersistidos = barriosList.stream().map(</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if(!verificarHayMinimoDosBarrios(barriosList)){</span>
+<span class="fc" id="L28">            throw new NoHaySuficientesBarriosException();</span>
+        }
+
+<span class="fc" id="L31">        List&lt;Barrio&gt; barriosPersistidos = barriosList.stream().map(</span>
                 barrio-&gt;{
-<span class="nc" id="L28">                  return   barrioPersistencePort.guardarBarrio(barrio);</span>
+<span class="fc" id="L33">                  return   barrioPersistencePort.guardarBarrio(barrio);</span>
                 }
-<span class="nc" id="L30">        ).collect(Collectors.toList());</span>
-<span class="nc" id="L31">        return barriosPersistidos;</span>
+<span class="fc" id="L35">        ).collect(Collectors.toList());</span>
+<span class="fc" id="L36">        return barriosPersistidos;</span>
     }
 
     public boolean verificarNoHayBarriosRepetidos(List&lt;Barrio&gt; barriosList){
-<span class="nc" id="L35">        Set&lt;Barrio&gt; barriosSet = new HashSet&lt;&gt;(barriosList);</span>
-<span class="nc" id="L36">        System.out.println(&quot;barriosList.size(): &quot;+barriosList.size());</span>
-<span class="nc" id="L37">        System.out.println(&quot;barriosSet.size(): &quot;+barriosSet.size());</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(barriosList.size()!=barriosSet.size()){</span>
-<span class="nc" id="L39">            return false;</span>
+<span class="fc" id="L40">        Set&lt;Barrio&gt; barriosSet = new HashSet&lt;&gt;(barriosList);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if(barriosList.size()!=barriosSet.size()){</span>
+<span class="fc" id="L42">            return false;</span>
         }
-<span class="nc" id="L41">        return true;</span>
+<span class="fc" id="L44">        return true;</span>
+    }
+
+    public  boolean verificarHayMinimoDosBarrios(List&lt;Barrio&gt; barriosList){
+<span class="fc" id="L48">        Set&lt;Barrio&gt; barriosSet = new HashSet&lt;&gt;(barriosList);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if(barriosSet.size()&gt;=2){</span>
+<span class="fc" id="L50">            return true;</span>
+        }
+<span class="fc" id="L52">        return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

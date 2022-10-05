@@ -3,11 +3,13 @@
 import com.pragma.carpooling.domain.api.IViajeServicePort;
 import com.pragma.carpooling.domain.model.Viaje;
 import com.pragma.carpooling.domain.spi.IViajePersistencePort;
+import com.pragma.carpooling.infrastructure.exception.HorarioNullException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-<span class="fc" id="L10">@RequiredArgsConstructor</span>
+<span class="fc" id="L12">@RequiredArgsConstructor</span>
 public class ViajeUseCase implements IViajeServicePort {
 
     private final IViajePersistencePort viajePersistencePort;
@@ -15,12 +17,28 @@ public class ViajeUseCase implements IViajeServicePort {
     @Override
     public void guardarListaViajes(List&lt;Viaje&gt; viajesList, Long idRuta) {
 
-<span class="nc" id="L18">        viajesList.stream().forEach(</span>
-                viaje -&gt; {
-<span class="nc" id="L20">                     viajePersistencePort.guardarViajesConRuta(idRuta , viaje);</span>
-<span class="nc" id="L21">                }</span>
-        );
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if(!validarViajesContienenFechaHora(viajesList)){</span>
+<span class="fc" id="L21">            throw new HorarioNullException();</span>
+        }
 
-<span class="nc" id="L24">    }</span>
+<span class="fc" id="L24">        viajesList.stream().forEach(</span>
+                viaje -&gt; {
+<span class="fc" id="L26">                     viajePersistencePort.guardarViajesConRuta(idRuta , viaje);</span>
+<span class="fc" id="L27">                }</span>
+        );
+<span class="fc" id="L29">    }</span>
+
+    public boolean validarViajesContienenFechaHora(List&lt;Viaje&gt; viajesList){
+<span class="fc" id="L32">        AtomicBoolean valido = new AtomicBoolean(true);</span>
+<span class="fc" id="L33">        viajesList.stream().forEach(</span>
+                viaje -&gt; {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">                    if(viaje.getHorario()==null){</span>
+<span class="fc" id="L36">                      valido.set(false);</span>
+                    }
+<span class="fc" id="L38">                }</span>
+        );
+<span class="fc" id="L40">        return valido.get();</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

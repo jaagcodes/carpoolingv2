@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-03T16:35:57-0500",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 11.0.13 (Eclipse Adoptium)"
+    date = "2022-10-04T19:46:30-0500",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class RutaEntityMapperImpl implements RutaEntityMapper {
@@ -38,17 +38,12 @@ public class RutaEntityMapperImpl implements RutaEntityMapper {
             return null;
         }
 
-        Long idUsuario = null;
-        Long idRuta = null;
-        String descripcion = null;
-        Integer cupos = null;
+        Ruta ruta = new Ruta();
 
-        idUsuario = rutaEntityUsuarioEntityIdUsuario( rutaEntity );
-        idRuta = rutaEntity.getIdRuta();
-        descripcion = rutaEntity.getDescripcion();
-        cupos = rutaEntity.getCupos();
-
-        Ruta ruta = new Ruta( idRuta, idUsuario, descripcion, cupos );
+        ruta.setIdUsuario( rutaEntityUsuarioEntityIdUsuario( rutaEntity ) );
+        ruta.setIdRuta( rutaEntity.getIdRuta() );
+        ruta.setDescripcion( rutaEntity.getDescripcion() );
+        ruta.setCupos( rutaEntity.getCupos() );
 
         return ruta;
     }

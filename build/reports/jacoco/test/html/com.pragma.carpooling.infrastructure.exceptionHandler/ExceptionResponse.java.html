@@ -2,19 +2,23 @@
 
 <span class="nc" id="L3">public enum ExceptionResponse {</span>
 
-<span class="nc" id="L5">    USER_NOT_FOUND(&quot;No user found with this email&quot;),</span>
-<span class="nc" id="L6">    NO_DATA_FOUND(&quot;No data found for this request&quot;),</span>
-<span class="nc" id="L7">    USER_ALREADY_EXISTS(&quot;There is already a user with this email&quot;),</span>
-<span class="nc" id="L8">    BARRIOS_REPETIDOS(&quot;No pueden haber barrios repetidos en una ruta&quot;);</span>
+<span class="nc" id="L5">    USER_NOT_FOUND(&quot;No existe usuario con este email&quot;),</span>
+<span class="nc" id="L6">    NO_DATA_FOUND(&quot;No se encontraron datos&quot;),</span>
+<span class="nc" id="L7">    USER_ALREADY_EXISTS(&quot;Ya existe un usuario con este email&quot;),</span>
+<span class="nc" id="L8">    BARRIOS_REPETIDOS(&quot;No pueden haber barrios con el mismo nombre repetidos en una ruta&quot;),</span>
+<span class="nc" id="L9">    INSUFICIENTES_BARRIOS(&quot;No hay suficientes barrios para registrar una ruta&quot;),</span>
+<span class="nc" id="L10">    CUPOS_INVALIDOS(&quot;Cantidad de cupos invÃ¡lidos, debe estar entre 4 y 1 (incluyÃ©ndolos)&quot;),</span>
+<span class="nc" id="L11">    HORARIO_NULL(&quot;No se puede registrar un viaje con horario null&quot;);</span>
+
 
     private String message;
 
-<span class="nc" id="L12">    ExceptionResponse(String message){</span>
-<span class="nc" id="L13">        this.message = message;</span>
-<span class="nc" id="L14">    }</span>
+<span class="nc" id="L16">    ExceptionResponse(String message){</span>
+<span class="nc" id="L17">        this.message = message;</span>
+<span class="nc" id="L18">    }</span>
 
     public String getMessage(){
-<span class="nc" id="L17">        return this.message;</span>
+<span class="nc" id="L21">        return this.message;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

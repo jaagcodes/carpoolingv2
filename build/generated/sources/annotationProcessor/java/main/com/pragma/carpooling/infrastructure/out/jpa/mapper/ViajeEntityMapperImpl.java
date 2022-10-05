@@ -4,7 +4,6 @@ import com.pragma.carpooling.domain.model.Viaje;
 import com.pragma.carpooling.infrastructure.out.jpa.entity.RutaBarrioEntity;
 import com.pragma.carpooling.infrastructure.out.jpa.entity.RutaEntity;
 import com.pragma.carpooling.infrastructure.out.jpa.entity.ViajeEntity;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-03T16:35:57-0500",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 11.0.13 (Eclipse Adoptium)"
+    date = "2022-10-04T21:53:40-0500",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class ViajeEntityMapperImpl implements ViajeEntityMapper {
@@ -39,15 +38,11 @@ public class ViajeEntityMapperImpl implements ViajeEntityMapper {
             return null;
         }
 
-        Long idRuta = null;
-        Long idViaje = null;
-        LocalDateTime horario = null;
+        Viaje viaje = new Viaje();
 
-        idRuta = viajeEntityRutaBarrioEntityRutaEntityIdRuta( viajeEntity );
-        idViaje = viajeEntity.getIdViaje();
-        horario = viajeEntity.getHorario();
-
-        Viaje viaje = new Viaje( idViaje, idRuta, horario );
+        viaje.setIdRuta( viajeEntityRutaBarrioEntityRutaEntityIdRuta( viajeEntity ) );
+        viaje.setIdViaje( viajeEntity.getIdViaje() );
+        viaje.setHorario( viajeEntity.getHorario() );
 
         return viaje;
     }

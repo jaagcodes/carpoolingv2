@@ -17,10 +17,10 @@ public class RutaRestController {
 
     private final IRutaHandler rutaHandler;
 
-    @PostMapping(&quot;&quot;)
+    @PostMapping(&quot;guardarRutaCompleta&quot;)
     public ResponseEntity&lt;Void&gt; guardarRutaCompleta(@RequestBody RutaCompletaRequest rutaCompletaRequest){
 <span class="nc" id="L22">        rutaHandler.guardarRutaCompleta(rutaCompletaRequest);</span>
-<span class="nc" id="L23">        return ResponseEntity.status(HttpStatus.CREATED).build();</span>
+<span class="nc" id="L23">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

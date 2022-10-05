@@ -7,6 +7,10 @@ public class Usuario {
     private String apellidos;
     private String email;
 
+    public Usuario() {
+
+    }
+
     public Usuario(Long idUsuario, String nombres, String apellidos, String email) {
         this.idUsuario = idUsuario;
         this.nombres = nombres;

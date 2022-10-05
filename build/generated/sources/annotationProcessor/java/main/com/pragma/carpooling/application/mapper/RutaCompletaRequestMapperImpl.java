@@ -8,7 +8,6 @@ import com.pragma.carpooling.domain.model.Barrio;
 import com.pragma.carpooling.domain.model.Ruta;
 import com.pragma.carpooling.domain.model.Usuario;
 import com.pragma.carpooling.domain.model.Viaje;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -16,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-03T16:35:57-0500",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 11.0.13 (Eclipse Adoptium)"
+    date = "2022-10-05T00:55:53-0500",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class RutaCompletaRequestMapperImpl implements RutaCompletaRequestMapper {
@@ -28,16 +27,10 @@ public class RutaCompletaRequestMapperImpl implements RutaCompletaRequestMapper 
             return null;
         }
 
-        String descripcion = null;
-        Integer cupos = null;
+        Ruta ruta = new Ruta();
 
-        descripcion = rutaCompletaRequest.getDescripcion();
-        cupos = rutaCompletaRequest.getCupos();
-
-        Long idRuta = null;
-        Long idUsuario = null;
-
-        Ruta ruta = new Ruta( idRuta, idUsuario, descripcion, cupos );
+        ruta.setDescripcion( rutaCompletaRequest.getDescripcion() );
+        ruta.setCupos( rutaCompletaRequest.getCupos() );
 
         return ruta;
     }
@@ -48,17 +41,11 @@ public class RutaCompletaRequestMapperImpl implements RutaCompletaRequestMapper 
             return null;
         }
 
-        String nombres = null;
-        String apellidos = null;
-        String email = null;
+        Usuario usuario = new Usuario();
 
-        nombres = usuarioRequest.getNombres();
-        apellidos = usuarioRequest.getApellidos();
-        email = usuarioRequest.getEmail();
-
-        Long idUsuario = null;
-
-        Usuario usuario = new Usuario( idUsuario, nombres, apellidos, email );
+        usuario.setNombres( usuarioRequest.getNombres() );
+        usuario.setApellidos( usuarioRequest.getApellidos() );
+        usuario.setEmail( usuarioRequest.getEmail() );
 
         return usuario;
     }
@@ -96,15 +83,10 @@ public class RutaCompletaRequestMapperImpl implements RutaCompletaRequestMapper 
             return null;
         }
 
-        String nombre = null;
-        String descripcion = null;
+        Barrio barrio = new Barrio();
 
-        nombre = barrioRequest.getNombre();
-        descripcion = barrioRequest.getDescripcion();
-
-        Long idBarrio = null;
-
-        Barrio barrio = new Barrio( idBarrio, nombre, descripcion );
+        barrio.setNombre( barrioRequest.getNombre() );
+        barrio.setDescripcion( barrioRequest.getDescripcion() );
 
         return barrio;
     }
@@ -114,14 +96,9 @@ public class RutaCompletaRequestMapperImpl implements RutaCompletaRequestMapper 
             return null;
         }
 
-        LocalDateTime horario = null;
+        Viaje viaje = new Viaje();
 
-        horario = viajeRequest.getHorario();
-
-        Long idViaje = null;
-        Long idRuta = null;
-
-        Viaje viaje = new Viaje( idViaje, idRuta, horario );
+        viaje.setHorario( viajeRequest.getHorario() );
 
         return viaje;
     }

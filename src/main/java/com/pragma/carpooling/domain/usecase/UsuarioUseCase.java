@@ -4,7 +4,6 @@ import com.pragma.carpooling.domain.api.IUsuarioServicePort;
 import com.pragma.carpooling.domain.model.Usuario;
 import com.pragma.carpooling.domain.spi.IUsuarioPersistencePort;
 
-import java.util.List;
 
 public class UsuarioUseCase implements IUsuarioServicePort {
 
@@ -20,3 +19,4 @@ public class UsuarioUseCase implements IUsuarioServicePort {
     }
 
 }
+

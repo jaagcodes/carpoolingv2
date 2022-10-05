@@ -4,18 +4,29 @@ import com.pragma.carpooling.domain.api.IRutaServicePort;
 import com.pragma.carpooling.domain.model.Ruta;
 import com.pragma.carpooling.domain.spi.IRutaPersistencePort;
 
+import com.pragma.carpooling.infrastructure.exception.CuposInvalidosException;
 import lombok.RequiredArgsConstructor;
 
 
 
-<span class="fc" id="L11">@RequiredArgsConstructor</span>
+<span class="fc" id="L12">@RequiredArgsConstructor</span>
 public class RutaUseCase implements IRutaServicePort {
 
     private final IRutaPersistencePort rutaPersistencePort;
 
     @Override
     public Ruta guardarRuta(Ruta ruta) {
-<span class="nc" id="L18">        return rutaPersistencePort.guardarRuta(ruta);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if(!validacionCantidadDeCupos(ruta.getCupos())){</span>
+<span class="fc" id="L20">            throw new CuposInvalidosException();</span>
+        }
+<span class="fc" id="L22">        return rutaPersistencePort.guardarRuta(ruta);</span>
+    }
+
+    private boolean validacionCantidadDeCupos(Integer cupos ){
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        if(cupos &gt; 4 || cupos &lt; 1){</span>
+<span class="fc" id="L27">            return false;</span>
+        }
+<span class="fc" id="L29">        return true;</span>
     }
 
 }

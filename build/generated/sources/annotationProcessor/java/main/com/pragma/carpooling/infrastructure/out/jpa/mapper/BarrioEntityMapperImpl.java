@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-03T16:35:57-0500",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 11.0.13 (Eclipse Adoptium)"
+    date = "2022-10-04T23:38:35-0500",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class BarrioEntityMapperImpl implements BarrioEntityMapper {
@@ -36,15 +36,11 @@ public class BarrioEntityMapperImpl implements BarrioEntityMapper {
             return null;
         }
 
-        Long idBarrio = null;
-        String nombre = null;
-        String descripcion = null;
+        Barrio barrio = new Barrio();
 
-        idBarrio = barrioEntity.getIdBarrio();
-        nombre = barrioEntity.getNombre();
-        descripcion = barrioEntity.getDescripcion();
-
-        Barrio barrio = new Barrio( idBarrio, nombre, descripcion );
+        barrio.setIdBarrio( barrioEntity.getIdBarrio() );
+        barrio.setNombre( barrioEntity.getNombre() );
+        barrio.setDescripcion( barrioEntity.getDescripcion() );
 
         return barrio;
     }

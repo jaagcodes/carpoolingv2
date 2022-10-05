@@ -8,6 +8,9 @@ public class Barrio {
     private String nombre;
     private String descripcion;
 
+    public Barrio() {
+    }
+
     public Barrio(Long idBarrio, String nombre, String descripcion) {
         this.idBarrio = idBarrio;
         this.nombre = nombre;

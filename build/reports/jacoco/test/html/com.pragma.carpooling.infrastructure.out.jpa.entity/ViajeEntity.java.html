@@ -3,10 +3,8 @@
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,19 +16,19 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = &quot;viaje&quot;)
 @Getter
-<span class="nc" id="L21">@Setter</span>
-<span class="fc" id="L22">public class ViajeEntity {</span>
+<span class="nc" id="L19">@Setter</span>
+<span class="fc" id="L20">public class ViajeEntity {</span>
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = &quot;id_viaje&quot;)
-<span class="nc" id="L27">    private Long idViaje;</span>
+<span class="nc" id="L25">    private Long idViaje;</span>
     @ManyToOne
     @JoinColumn(
             name = &quot;id_ruta&quot;
     )
-<span class="nc" id="L32">    private RutaBarrioEntity rutaBarrioEntity;</span>
+<span class="nc" id="L30">    private RutaBarrioEntity rutaBarrioEntity;</span>
     @Column(name = &quot;horario&quot;)
-<span class="nc" id="L34">    private LocalDateTime horario;</span>
+<span class="nc" id="L32">    private LocalDateTime horario;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

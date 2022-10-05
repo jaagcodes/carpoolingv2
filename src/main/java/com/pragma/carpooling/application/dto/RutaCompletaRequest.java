@@ -1,8 +1,5 @@
 package com.pragma.carpooling.application.dto;
 
-import com.pragma.carpooling.domain.model.Barrio;
-import com.pragma.carpooling.domain.model.Usuario;
-import com.pragma.carpooling.domain.model.Viaje;
 import lombok.Getter;
 import lombok.Setter;
 

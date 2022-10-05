@@ -43,4 +43,5 @@ public class RutaHandler implements IRutaHandler{
         List<Viaje> viajesList = rutaCompletaRequestMapper.toViajeList(rutaCompletaRequest.getViajesList());
         viajeServicePort.guardarListaViajes(viajesList, idRuta);
     }
+
 }

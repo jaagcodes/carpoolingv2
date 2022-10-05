@@ -4,20 +4,20 @@ import com.pragma.carpooling.domain.api.IUsuarioServicePort;
 import com.pragma.carpooling.domain.model.Usuario;
 import com.pragma.carpooling.domain.spi.IUsuarioPersistencePort;
 
-import java.util.List;
 
 public class UsuarioUseCase implements IUsuarioServicePort {
 
     private final IUsuarioPersistencePort usuarioPersistencePort;
 
-<span class="fc" id="L13">    public UsuarioUseCase(IUsuarioPersistencePort usuarioPersistencePort) {</span>
-<span class="fc" id="L14">        this.usuarioPersistencePort = usuarioPersistencePort;</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L12">    public UsuarioUseCase(IUsuarioPersistencePort usuarioPersistencePort) {</span>
+<span class="fc" id="L13">        this.usuarioPersistencePort = usuarioPersistencePort;</span>
+<span class="fc" id="L14">    }</span>
 
     @Override
     public Usuario guardarUsuario(Usuario usuario) {
-<span class="nc" id="L19">        return usuarioPersistencePort.guardarUsuario(usuario);</span>
+<span class="fc" id="L18">        return usuarioPersistencePort.guardarUsuario(usuario);</span>
     }
 
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
